@@ -26,6 +26,13 @@ android {
   }
 }
 
+final espressoRunnerAndRules = "1.1.1"
+final espressoTruthAndJunit = "1.1.0"
+final espressoCore= "3.1.1"
+final material= "1.0.0"
+final constraintLayout= "2.0.0-alpha3"
+final appcompat= "1.0.2"
+
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -33,20 +40,29 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
   // Support Libraries
-  implementation 'androidx.appcompat:appcompat:1.0.2'
-  implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+  implementation "androidx.appcompat:appcompat:$appcompat"
+  implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
 
 
 
+  /* my regex to replace pattern :
+
+   androidTestImplementation 'androidx.test:runner:1.1.1'
+
+    with :
+
+   androidTestImplementation "androidx.test:runner:1.1.1"
+
+   */
   // Testing Dependencies
   testImplementation 'junit:junit:4.12'
   testImplementation "androidx.arch.core:core-testing:2.0.0"
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    androidTestImplementation 'androidx.test:rules:1.1.1'
-    androidTestImplementation 'androidx.test.ext:truth:1.1.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation "androidx.test:runner:$espressoRunnerAndRules"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCore"
+    androidTestImplementation "androidx.test:rules:$espressoRunnerAndRules"
+    androidTestImplementation "androidx.test.ext:truth:$espressoTruthAndJunit"
+    androidTestImplementation "androidx.test.ext:junit:$espressoTruthAndJunit"
 
 
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation "com.google.android.material:material:$material"
 }
