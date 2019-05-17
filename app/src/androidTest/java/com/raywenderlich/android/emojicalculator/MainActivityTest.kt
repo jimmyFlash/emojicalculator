@@ -7,6 +7,7 @@ import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.raywenderlich.android.emojicalculator.ScreenRobot.Companion.withRobot
 import org.hamcrest.Matchers.allOf
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -83,7 +84,7 @@ class MainActivityTest {
     fun whenOkayButtonIsPressedAndAmountIsFilledTipIsSet() {
         ActivityScenario.launch(MainActivity::class.java)
 
-        // 1 The statement to type in “11” into the input. You use a matcher like you’ve learned, then call .perform(typeText("11")) to type that text into the field.
+       /* // 1 The statement to type in “11” into the input. You use a matcher like you’ve learned, then call .perform(typeText("11")) to type that text into the field.
         onView(withId(R.id.inputAmount))
                 .perform(typeText("11"))
 
@@ -93,6 +94,14 @@ class MainActivityTest {
         // 2 You check that the view with the ID textTip has the correct text using withText() instead of combining allOf() and isDisplayed(). This is an alternate way to perform this check.
         onView(withId(R.id.textTip))
                 .check(matches(withText("1.98")))
+        */
+
+//        using screen robot instead od the above commented lines
+
+        withRobot(CalculatorScreenRobot::class.java)
+                .inputCheckAmountAndSelectOkayButton("11")
+                .verifyTipIsCorrect("1.98")
+
     }
 
 
@@ -103,7 +112,7 @@ class MainActivityTest {
     fun whenOkayButtonIsPressedAndRoundSwitchIsSelectedAmountIsCorrect() {
         ActivityScenario.launch(MainActivity::class.java)
 
-        onView(withId(R.id.switchRound))
+        /*onView(withId(R.id.switchRound))
                 .perform(click())
         onView(withId(R.id.inputAmount))
                 .perform(typeText("11"))
@@ -111,7 +120,14 @@ class MainActivityTest {
                 .perform(click())
 
         onView(withId(R.id.textTip))
-                .check(matches(withText("2.00")))
+                .check(matches(withText("2.00")))*/
+
+//        using screen robot to replace the above
+
+        withRobot(CalculatorScreenRobot::class.java)
+                .clickOkOnView(R.id.switchRound)
+                .inputCheckAmountAndSelectOkayButton("11")
+                .verifyTipIsCorrect("2.00")
     }
 
 
