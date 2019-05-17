@@ -35,7 +35,8 @@
     android:switchPadding="16dp"
     android:text="@string/round_up_to_nearest_dollar"
     app:layout_constraintBottom_toTopOf="@+id/buttonBad"
-    app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+    app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+    app:layout_constraintStart_toStartOf="parent"/>
 
   <Button
     android:id="@+id/buttonBad"
@@ -117,7 +118,8 @@
     android:text="@string/totalLabel"
     android:textSize="@dimen/textCalculation"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textTipLabel" />
+    app:layout_constraintTop_toBottomOf="@+id/textTipLabel"
+      app:layout_constraintStart_toStartOf="parent"/>
 
   <TextView
     android:id="@+id/textTotal"
