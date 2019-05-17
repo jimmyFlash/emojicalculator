@@ -33,6 +33,15 @@ final material= "1.0.0"
 final constraintLayout= "2.0.0-alpha3"
 final appcompat= "1.0.2"
 
+final espressDependencySet = [
+
+        runner :  "androidx.test:runner:$espressoRunnerAndRules",
+        espressoCore: "androidx.test.espresso:espresso-core:$espressoCore",
+        rules : "androidx.test:rules:$espressoRunnerAndRules",
+        truth :  "androidx.test.ext:truth:$espressoTruthAndJunit",
+        junit : "androidx.test.ext:junit:$espressoTruthAndJunit"
+]
+
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -46,22 +55,15 @@ dependencies {
 
 
   /* my regex to replace pattern :
-
    androidTestImplementation 'androidx.test:runner:1.1.1'
-
     with :
-
    androidTestImplementation "androidx.test:runner:1.1.1"
-
    */
+
   // Testing Dependencies
   testImplementation 'junit:junit:4.12'
   testImplementation "androidx.arch.core:core-testing:2.0.0"
-    androidTestImplementation "androidx.test:runner:$espressoRunnerAndRules"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCore"
-    androidTestImplementation "androidx.test:rules:$espressoRunnerAndRules"
-    androidTestImplementation "androidx.test.ext:truth:$espressoTruthAndJunit"
-    androidTestImplementation "androidx.test.ext:junit:$espressoTruthAndJunit"
+  androidTestImplementation espressDependencySet.values()
 
 
     implementation "com.google.android.material:material:$material"
