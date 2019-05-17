@@ -1,0 +1,26 @@
+ext{
+
+    final espressoRunnerAndRules = "1.1.1"
+    final espressoTruthAndJunit = "1.1.0"
+    final espressoCore= "3.1.1"
+    final material= "1.0.0"
+    final constraintLayout= "2.0.0-alpha3"
+    final appcompat= "1.0.2"
+
+     espressDependencySet = [
+
+            runner :  "androidx.test:runner:$espressoRunnerAndRules",
+            espressoCore: "androidx.test.espresso:espresso-core:$espressoCore",
+            rules : "androidx.test:rules:$espressoRunnerAndRules",
+            truth :  "androidx.test.ext:truth:$espressoTruthAndJunit",
+            junit : "androidx.test.ext:junit:$espressoTruthAndJunit"
+    ]
+
+     supportLibs = [
+
+            appcompat :  "androidx.appcompat:appcompat:$appcompat",
+            constraintLayout :  "androidx.constraintlayout:constraintlayout:$constraintLayout",
+            material :  "com.google.android.material:material:$material"
+    ]
+
+}

@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply from: '../dependencies.gradle'
+
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion
   defaultConfig {
@@ -26,22 +28,6 @@ android {
   }
 }
 
-final espressoRunnerAndRules = "1.1.1"
-final espressoTruthAndJunit = "1.1.0"
-final espressoCore= "3.1.1"
-final material= "1.0.0"
-final constraintLayout= "2.0.0-alpha3"
-final appcompat= "1.0.2"
-
-final espressDependencySet = [
-
-        runner :  "androidx.test:runner:$espressoRunnerAndRules",
-        espressoCore: "androidx.test.espresso:espresso-core:$espressoCore",
-        rules : "androidx.test:rules:$espressoRunnerAndRules",
-        truth :  "androidx.test.ext:truth:$espressoTruthAndJunit",
-        junit : "androidx.test.ext:junit:$espressoTruthAndJunit"
-]
-
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -49,8 +35,7 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
   // Support Libraries
-  implementation "androidx.appcompat:appcompat:$appcompat"
-  implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
+  implementation supportLibs.values()
 
 
 
@@ -66,5 +51,5 @@ dependencies {
   androidTestImplementation espressDependencySet.values()
 
 
-    implementation "com.google.android.material:material:$material"
+
 }
