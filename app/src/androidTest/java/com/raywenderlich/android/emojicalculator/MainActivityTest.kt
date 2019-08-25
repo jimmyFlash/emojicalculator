@@ -56,12 +56,54 @@ class MainActivityTest {
     }
 
     @Test
+    fun onLaunchRoundSwitchIsDisplayed() {
+        ActivityScenario.launch(MainActivity::class.java)
+
+        withRobot(CalculatorScreenRobot::class.java)
+                .checkIsDisplayed(R.id.switchRound)
+    }
+
+    @Test
     fun onLaunchOkayButtonIsDisplayed() {
         ActivityScenario.launch(MainActivity::class.java)
 
         onView(withText(R.string.okay))
                 .check(matches(isDisplayed()))
     }
+
+    @Test
+    fun onLaunchBadButtonIsDisplayed() {
+        ActivityScenario.launch(MainActivity::class.java)
+
+        onView(withText(R.string.bad))
+                .check(matches(isDisplayed()))
+    }
+
+
+    @Test
+    fun onLaunchGreatButtonIsDisplayed() {
+        ActivityScenario.launch(MainActivity::class.java)
+
+        onView(withText(R.string.great))
+                .check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun onLaunchTipLabelIsDisplayed() {
+        ActivityScenario.launch(MainActivity::class.java)
+
+        withRobot(CalculatorScreenRobot::class.java)
+                .checkIsDisplayed(R.id.textTipLabel)
+    }
+
+    @Test
+    fun onLaunchTotalLabelIsDisplayed() {
+        ActivityScenario.launch(MainActivity::class.java)
+
+        withRobot(CalculatorScreenRobot::class.java)
+                .checkIsDisplayed(R.id.textTotal)
+    }
+
 
     @Test
     fun whenOkayButtonIsPressedAndAmountIsEmptyTipIsEmpty() {
@@ -153,9 +195,30 @@ class MainActivityTest {
             return checkViewHasText(R.id.textTip, tip)
         }
 
+        fun verifyTotalIsCorrect(total: String): CalculatorScreenRobot {
+            return checkViewHasText(R.id.textTotal, total)
+        }
+
+        fun verifyPercentIsCorrect(percent: String): CalculatorScreenRobot {
+            return checkViewHasText(R.id.textPercent, percent)
+        }
+
+
+        fun inputCheckAmountAndSelectBadButton(input: String):
+                CalculatorScreenRobot {
+            return enterTextIntoView(R.id.inputAmount, input)
+                    .clickOkOnView(R.id.buttonBad)
+        }
+
         fun inputCheckAmountAndSelectOkayButton(input: String): CalculatorScreenRobot {
             return enterTextIntoView(R.id.inputAmount, input)
                     .clickOkOnView(R.id.buttonOkay)
+        }
+
+        fun inputCheckAmountAndSelectGreatButton(input: String):
+                CalculatorScreenRobot {
+            return enterTextIntoView(R.id.inputAmount, input)
+                    .clickOkOnView(R.id.buttonGreat)
         }
 
 
